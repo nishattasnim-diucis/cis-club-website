@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CIS Club - Contact</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        /* White Navigation Bar */
+        .navbar {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            color: #1a237e;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: #1a237e;
+            background: #f5f5f5;
+        }
+        
+        .nav-links a.active {
+            color: #1a237e;
+            background: #e8eaf6;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .page-title {
+            color: #1a237e;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 28px;
+        }
+        
+        /* Contact Cards Layout */
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-card h3 {
+            color: #1a237e;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8eaf6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item i {
+            color: #1a237e;
+            margin-right: 15px;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+        
+        /* Social Media Card */
+        .social-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .social-card h3 {
+            color: #1a237e;
+            margin-top: 0;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8eaf6;
+        }
+        
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background: #e8eaf6;
+            transform: translateX(5px);
+        }
+        
+        .social-link i {
+            font-size: 24px;
+            margin-right: 15px;
+            width: 40px;
+        }
+        
+        .social-link span {
+            flex: 1;
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .social-link .social-text {
+            font-size: 14px;
+            color: #666;
+            margin-top: 3px;
+        }
+        
+        .fb-icon { color: #1877F2; }
+        .whatsapp-icon { color: #25D366; }
+        .email-icon { color: #EA4335; }
+        .phone-icon { color: #34A853; }
+        .map-icon { color: #FF9800; }
+        
+        /* Quick Contact Section */
+        .quick-contact {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .quick-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 200px;
+            transition: transform 0.3s;
+        }
+        
+        .quick-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .quick-item i {
+            font-size: 32px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-links {
+            margin-top: 15px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            opacity: 0.8;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .social-link {
+                padding: 12px;
+            }
+            
+            .quick-contact {
+                gap: 15px;
+            }
+            
+            .quick-item {
+                width: 170px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .quick-contact {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .quick-item {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- White Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">CIS CLUB</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="join.html">Join</a>
+                <a href="events.html">Events</a>
+                <a href="resources.html">Resources</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Contact Content -->
+    <main class="contact-container">
+        <h1 class="page-title">Contact Us</h1>
+        
+        <!-- Contact Cards -->
+        <div class="contact-cards">
+            <!-- Card 1: Location -->
+            <div class="contact-card">
+                <h3><i class="fas fa-map-marker-alt"></i> Location & Hours</h3>
+                <div class="contact-item">
+                    <i class="fas fa-university"></i>
+                    <div>
+                        <!-- EDIT YOUR LOCATION HERE -->
+                        <strong>Daffodil International University</strong><br>
+                        Computer Science Department<br>
+                        Main Campus Building<br>
+                        Birulia Savar, Dhaka
+                        <!-- END EDIT -->
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="far fa-clock"></i>
+                    <div>
+                        <strong>Club Hours</strong><br>
+                         Saturday-Thursday: 11:00 AM - 7:00 PM<br>
+                        Friday: Closed
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 2: Contact Details -->
+            <div class="contact-card">
+                <h3><i class="fas fa-address-book"></i> Contact Details</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong><br>
+                        <!-- EDIT YOUR EMAIL HERE -->
+                        <a href="cisoffice1@daffodilvarsity.edu.bd">cisclub@university.edu.np</a>
+                        <!-- END EDIT -->
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong>Phone</strong><br>
+                        <!-- EDIT YOUR PHONE HERE -->
+                        <a href="tel:+8809617901233">+977 9841 000 000</a>
+                        <!-- END EDIT -->
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-user-tie"></i>
+                    <div>
+                        <strong>Head</strong><br>
+                        <!-- EDIT FACULTY ADVISOR HERE -->
+                        <a href="Mr. Md. Sarwar Hossain Mollah. ">Mr. Md. Sarwar Hossain Mollah. </a>
+                        <!-- END EDIT -->
+                    </div>
+                    <div>
+                        <strong>Dean of FSIT</strong><br>
+                        <!-- EDIT FACULTY ADVISOR HERE -->
+                        <a href= "Mr. Md. Sarwar Hossain Mollah">Mr. Md. Sarwar Hossain Mollah. </a>
+                        <!-- END EDIT -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 3: Social Media Links -->
+            <div class="social-card">
+                <h3><i class="fas fa-share-alt"></i> Connect With Us</h3>
+                <div class="social-links">
+                    <!-- EDIT FACEBOOK LINK HERE -->
+                    <a href="https://www.facebook.com/share/1Avpm141Jr/" class="social-link" target="_blank">
+                        <i class="fab fa-facebook fb-icon"></i>
+                        <span>
+                            <div>Facebook</div>
+                            <div class="social-text">Follow us for updates</div>
+                        </span>
+                        <i class="fas fa-external-link-alt" style="color: #999; font-size: 14px;"></i>
+                    </a>
+                    
+                    <!-- EDIT WHATSAPP LINK HERE -->
+                    <a href="https://wa.me/9779841000000" class="social-link" target="_blank">
+                        <i class="fab fa-whatsapp whatsapp-icon"></i>
+                        <span>
+                            <div>WhatsApp Group</div>
+                            <div class="social-text">Join our group chat</div>
+                        </span>
+                        <i class="fas fa-external-link-alt" style="color: #999; font-size: 14px;"></i>
+                    </a>
+                    
+                    <!-- EMAIL LINK -->
+                    <a href="mailto:cisclub@university.edu.np" class="social-link">
+                        <i class="fas fa-envelope email-icon"></i>
+                        <span>
+                            <div>Email Us</div>
+                            <div class="social-text">Send us an email</div>
+                        </span>
+                    </a>
+                    
+                    <!-- PHONE LINK -->
+                    <a href="tel:+9779841000000" class="social-link">
+                        <i class="fas fa-phone phone-icon"></i>
+                        <span>
+                            <div>Call Us</div>
+                            <div class="social-text">Direct phone call</div>
+                        </span>
+                    </a>
+                    
+                    <!-- LOCATION LINK -->
+                    <a href="https://maps.app.goo.gl/6Y1v1VTvie7saqgJA" class="social-link" target="_blank">
+                        <i class="fas fa-map-marker-alt map-icon"></i>
+                        <span>
+                            <div>Find Us</div>
+                            <div class="social-text">View on Google Maps</div>
+                        </span>
+                        <i class="fas fa-external-link-alt" style="color: #999; font-size: 14px;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Contact -->
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h3 style="color: #1a237e; margin-bottom: 25px;"><i class="fas fa-bolt"></i> Quick Contact</h3>
+            <div class="quick-contact">
+                <div class="quick-item">
+                    <i class="fab fa-facebook" style="color: #1877F2;"></i>
+                    <div><strong>Facebook</strong></div>
+                    <div style="font-size: 14px; color: #666; margin-top: 5px;">@cisclub</div>
+                </div>
+                
+                <div class="quick-item">
+                    <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                    <div><strong>WhatsApp</strong></div>
+                    <div style="font-size: 14px; color: #666; margin-top: 5px;">+977 9841 000 000</div>
+                </div>
+                
+                <div class="quick-item">
+                    <i class="fas fa-envelope" style="color: #EA4335;"></i>
+                    <div><strong>Email</strong></div>
+                    <div style="font-size: 14px; color: #666; margin-top: 5px;">cisclub@university.edu.np</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Note -->
+        <div style="max-width: 800px; margin: 0 auto; padding: 20px; background: #e8f5e9; border-radius: 10px; text-align: center;">
+            <p style="margin: 0; color: #2e7d32;">
+                <i class="fas fa-info-circle"></i> 
+                <strong>Best ways to reach us:</strong> WhatsApp for quick responses, Facebook for updates, Email for formal communication.
+            </p>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 CIS Club. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a> |
+            <a href="join.html">Join</a> |
+            <a href="events.html">Events</a> |
+            <a href="resources.html">Resources</a> |
+            <a href="gallery.html">Gallery</a> |
+            <a href="contact.html">Contact</a>
+        </div>
+        <p style="margin-top: 15px; opacity: 0.8; font-size: 14px;">Computer Information Systems Club</p>
+    </footer>
+
+    <script>
+        // Simple hover effect for contact cards
+        document.querySelectorAll('.contact-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+            });
+        });
+        
+        // Social link hover effects
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

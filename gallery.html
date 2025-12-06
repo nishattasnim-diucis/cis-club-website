@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CIS Club - Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* White Navigation Bar */
+        .navbar {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            color: #1a237e;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: #1a237e;
+            background: #f5f5f5;
+        }
+        
+        .nav-links a.active {
+            color: #1a237e;
+            background: #e8eaf6;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            padding: 30px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            color: #1a237e;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .row img {
+            width: 280px;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .row img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px; right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+        
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .prev { left: 20px; }
+        .next { right: 20px; }
+        
+        /* Footer */
+        footer {
+            background: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- White Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">CIS CLUB</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="join.html">Join</a>
+                <a href="events.html">Events</a>
+                <a href="resources.html">Resources</a>
+                <a href="gallery.html" class="active">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Gallery Content -->
+    <section class="gallery-section">
+        <h1 class="gallery-title">Club Gallery</h1>
+        
+        <div class="gallery-container">
+            <!-- First row - 4 rectangle images -->
+            <div class="row">
+                <img src="images/cis1.jpg" onclick="openLightbox(this.src)">
+                <img src="images/cis2.jpg" onclick="openLightbox(this.src)">
+                <img src="images/cis3.jpg" onclick="openLightbox(this.src)">
+                <img src="images/cis4.jpg" onclick="openLightbox(this.src)">
+            </div>
+            
+            <!-- Second row - 4 rectangle images -->
+            <div class="row">
+                <img src="images/cis5.jpg" onclick="openLightbox(this.src)">
+                <img src="images/cis6.jpg" onclick="openLightbox(this.src)">
+                <img src="images/cis7.jpg" onclick="openLightbox(this.src)">
+                <img src="images/cis8.jpg" onclick="openLightbox(this.src)">
+            </div>
+            
+            <!-- Third row - 2 rectangle images -->
+            <div class="row">
+                <img src="images/cis9.jpg" onclick="openLightbox(this.src)">
+                <img src="images/cis10.jpg" onclick="openLightbox(this.src)">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <span class="nav-btn prev" onclick="prevImage()">&#10094;</span>
+        <span class="nav-btn next" onclick="nextImage()">&#10095;</span>
+        <img id="lightbox-img">
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 CIS Club. All photos are property of CIS Club.</p>
+    </footer>
+
+    <script>
+        const images = [
+            'cis1.jpg', 'cis2.jpg', 'cis3.jpg', 'cis4.jpg',
+            'cis5.jpg', 'cis6.jpg', 'cis7.jpg', 'cis8.jpg',
+            'cis9.jpg', 'cis10.jpg'
+        ];
+        
+        let currentIndex = 0;
+        
+        function openLightbox(src) {
+            const filename = src.split('/').pop();
+            currentIndex = images.indexOf(filename);
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightbox-img').src = src;
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.getElementById('lightbox-img').src = images[currentIndex];
+        }
+        
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            document.getElementById('lightbox-img').src = images[currentIndex];
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').style.display === 'flex') {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+            }
+        });
+        
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('lightbox')) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

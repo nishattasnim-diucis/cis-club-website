@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* === NAVIGATION BAR STYLES === */
+        nav {
+            background: #2c3e50;
+            padding: 15px 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        #nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end; /* Right align */
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        #nav-menu li {
+            margin: 0;
+        }
+        
+        #nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        #nav-menu a:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+        }
+        
+        #nav-menu a.active {
+            background: #3498db;
+        }
+        
+        /* === ABOUT PAGE STYLES === */
+        .compact-about {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .compact-about h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+        
+        /* TEAM SECTION - COMES FIRST */
+        .team-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .team-section h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .compact-team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .member {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-img {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 3px solid #3498db;
+        }
+        
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .member h4 {
+            color: #2c3e50;
+            margin: 10px 0 5px;
+            font-size: 1.2rem;
+        }
+        
+        .member p {
+            color: #555;
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Mission and History side by side - COMES SECOND */
+        .mission-history-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .mission-section, .history-section {
+            flex: 1;
+            min-width: 300px;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+        
+        .mission-section h2, .history-section h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* History list styles */
+        .history-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .history-section ul li {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .history-section ul li strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .mission-history-container {
+                flex-direction: column;
+            }
+            
+            .mission-section, .history-section {
+                width: 100%;
+            }
+            
+            .compact-team {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .member {
+                width: 90%;
+            }
+            
+            #nav-menu {
+                justify-content: center; /* Center on mobile */
+                gap: 10px;
+            }
+            
+            nav {
+                padding: 15px 20px;
+            }
+            
+            #nav-menu a {
+                padding: 6px 10px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #nav-menu {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .member-img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="join.html">Join</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="compact-about">
+        <h1>About Us</h1>
+        
+        <!-- TEAM SECTION - FIRST -->
+        <div class="team-section">
+            <h2>Meet Our Team</h2>
+            <div class="compact-team">
+                <!-- Member 1 -->
+                <div class="member">
+                    <div class="member-img">
+                       <img src="images/shimu.jpg.jpeg" alt="Shumaiya Shimu">
+                    </div>
+                    <h4>Shumaiya Shimu</h4>
+                    <p>ID: 0242510012091056</p>
+                    <p>Computing & Information Systems</p>
+                </div>
+                
+                <!-- Member 2 -->
+                <div class="member">
+                    <div class="member-img">
+                        <img src="images/mim.jpg.jpeg" alt="Mim Jahan">
+
+                    </div>
+                    <h4>Mim Jahan</h4>
+                    <p>ID: 0242510012091032</p>
+                    <p>Computing & Information Systems</p>
+                </div>
+                
+                <!-- Member 3 -->
+                <div class="member">
+                    <div class="member-img">
+                        <img src="images/fatema.jpg.jpeg" alt="Tanvir">
+                    </div>
+                    <h4>Fatema Tuj Zohra Sadia</h4>
+                    <p>ID: 0242510012091021</p>
+                    <p>Computing & Information Systems</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MISSION & HISTORY SIDE BY SIDE - SECOND -->
+        <div class="mission-history-container">
+            <!-- MISSION SECTION -->
+            <div class="mission-section">
+                <h2>Our Mission</h2>
+                <p>Our mission is to deliver exceptional computing solutions that drive innovation and efficiency. We are committed to excellence in information systems development, providing cutting-edge technology services that empower businesses and individuals to achieve their goals in the digital era.</p>
+                <p>Through collaborative teamwork, continuous learning, and a passion for technology, we aim to create meaningful impact in our community and beyond.</p>
+            </div>
+            
+            <!-- HISTORY SECTION -->
+            <div class="history-section">
+                <h2>Our History</h2>
+                <ul>
+                    <li><strong>2023 - Foundation</strong><br>
+                    Our team first came together during our university studies in Computing & Information Systems. Recognizing our shared passion for technology, we began collaborating on academic projects.</li>
+                    
+                    <li><strong>2024 - First Projects</strong><br>
+                    We successfully completed several web development projects for local businesses, establishing our reputation for reliable and innovative solutions.</li>
+                    
+                    <li><strong>2025 - Expansion</strong><br>
+                    Expanded our services to include mobile app development and database management systems, serving a growing client base across multiple industries.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
